@@ -1,0 +1,101 @@
+<div class="wrapper" ng-if="user">
+	<div class="container">
+		<section>
+			<aside class="left">
+				<div class="top">
+					<a href="/">
+						<div class="logo"><img src="/images/logo.png" alt=""></div>
+						<div class="name">
+							<div class="s1">coffee</div>
+							<div class="s2">CRM</div>
+						</div>
+					</a>
+				</div>
+				<nav class="nav">
+					<a href="/{{item.url}}" class="nav-item index-{{$index}} {{item.current ? 'current' : ''}}" ng-repeat="item in config.nav" ng-if="item.role == user.role || item.role == 'all'" ng-click="getPage(item.url, $event)"><i class="icon"></i>{{item.caption}}</a>
+				</nav>
+				<div class="order" ng-if="order.total">
+					<h4>Сформированный заказ</h4>
+					<ul>
+						<li ng-repeat="item in order.service"><span class="count">{{item.count}}</span><span class="name">{{item.name}}</span></li>
+					</ul>
+					<div class="total">{{order.total}}<span class="currency">p</span></div>
+					<span class="pay" ng-click="getPopup('order')">Оплата</span>
+				</div>
+			</aside>
+
+			<aside class="right">
+				<div class="layout">
+					<div class="top">
+						<div class="datetime">
+							<div class="time">
+								<span class="digit">{{date.hours.toString()[0]}}</span>
+								<span class="digit">{{date.hours.toString()[1]}}</span>
+								<span class="colon">:</span>
+								<span class="digit">{{date.minutes.toString()[0]}}</span>
+								<span class="digit">{{date.minutes.toString()[1]}}</span>
+							</div>
+							<div class="date">{{date.day}} {{date.month}}<br>{{date.year}}</div>
+						</div>
+						<div class="userbox">
+							<div>
+								<div class="name">{{user.fio}}</div>
+								<span class="btn small" ng-if="user.shift" ng-click="shift('update')">Закрыть смену</span>
+								<span class="btn small" ng-click="auth('logout')">Выйти</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="content">
+						<div ng-include="templateUrl"></div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</aside>
+			<div class="clearfix"></div>
+		</section>
+
+		<footer>
+			<div class="copyright">&copy; 2013 Cofee CRM</div>
+			<div class="imc">
+				<img src="/images/imc.png" alt="">
+				<span class="text">Разработчик CoffeeCRM<br>компания IMC</span>
+			</div>
+			<div class="clearfix"></div>
+		</footer>
+	</div>
+</div>
+<div class="message {{message.status}}" ng-if="message">
+	<div class="container">
+		<i class="flaticon-close" ng-click="closeMessage()"></i>
+		<table>
+			<tr>
+				<td><i class="flaticon-info"></i></td>
+				<td>{{message.title}}<div ng-if="message.text"><b>{{message.text}}</b></div></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="overlay" ng-if="popup">
+	<div class="popup">
+		<i class="flaticon-close" ng-if="popup != 'login'" ng-click="closePopup()"></i>
+		<form class="payment" ng-if="popup == 'order'" ng-submit="completeOrder()">
+			<div class="title">Оплата</div>
+			<label class="tab index-{{$index}}" ng-repeat="item in config.payments"><input type="radio" ng-model="order.pay_type" value="{{item.type}}"><span><i class="icon"></i><br>{{item.caption}}</span></label>
+			<div class="text">
+				<h2>{{order.total}} руб.</h2>
+				<button type="submit" class="btn" ng-disabled="submit">Готово</button>
+			</div>
+		</form>
+		<form class="login" ng-if="popup == 'login'" ng-submit="auth('login')">
+			<div class="title">Вход</div>
+			<div class="form-elem">
+				<div class="input-text"><input type="text" ng-model="loginForm.username" placeholder="Логин" required></div>
+			</div>
+			<div class="form-elem">
+				<div class="input-text"><input type="password" ng-model="loginForm.password" placeholder="Пароль" required></div>
+			</div>
+			<div class="btn-wrapper"><button type="submit" class="btn" ng-disabled="submit">Войти</button></div>
+		</form>
+	</div>
+</div>

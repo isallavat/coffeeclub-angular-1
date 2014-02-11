@@ -1,0 +1,52 @@
+<h1>Новый визит</h1>
+<div class="dashboard">
+	<div class="form-elem float-left width-48">
+		<div class="input-text"><input type="text" placeholder="Имя" ng-keyup="searchClients(order.client.fio, 'fio')" ng-model="order.client.fio"></div>
+	</div>
+	<div class="form-elem float-left width-48">
+		<div class="input-text"><input type="text" placeholder="Телефон" ng-keyup="searchClients(order.client.phone, 'phone')" ng-model="order.client.phone"></div>
+	</div>
+	<div class="search-result" ng-if="searchClientsResult">
+		<div class="clients">
+			<table>
+				<tr ng-repeat="item in searchClientsResult" ng-click="selectClient(item)"><td>{{item.fio}}</td><td>{{item.phone}}</td></tr>
+			</table>
+		</div>
+	</div>
+	<div class="client" ng-if="client">
+		<p class="fio">{{client.fio}} ( {{client.phone}} )</p>
+		<h4>Доступные акции:</h4>
+		<ol class="actions">
+			<li ng-repeat="item in client.auction" ng-if="(item.bonus * 1) > (item.price * 1)">
+				<b ng-click="item.clicked = !item.clicked">{{item.name}} ( доступно: {{item.bonus_}} )</b>
+				<table ng-show="item.clicked">
+					<tr ng-repeat="item2 in item.service">
+						<td>{{item2.name}}</td>
+						<td>{{item.price}}</td>
+						<td><div class="input-text"><input type="number" placeholder="0" ng-keyup="changeBonus(item, item2, $event)"></div></td>
+					</tr>
+				</table>
+			</li>
+		</ol>
+		<div class="btn-wrapper"><span class="btn" ng-click="getAuction()">Оформить</span></div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="btns">
+		<span class="btn" ng-click="removeFromOrder()"><i class="icon">c</i>Сбросить</span>
+		<span class="btn" ng-if="0"><i class="icon">%</i>Сделать скидку</span>
+	</div>
+	<h3>Заказ клиента</h3>
+	<ul class="items">
+		<li ng-repeat="item in data.Service">
+			<div class="item brown">
+				<div class="inner" ng-click="addToOrder(item)">
+					<div class="name">{{item.name}}</div>
+					<div class="qty">{{item.qty}}</div>
+					<div class="price">{{item.price}}<span class="currency">p</span></div>
+					<span class="count" ng-if="order.service[item.id].count">{{order.service[item.id].count}}</span>
+				</div>
+				<i class="flaticon-close" ng-if="order.service[item.id].count" ng-click="removeFromOrder(item)"></i>
+			</div>
+		</li>
+	</ul>
+</div>

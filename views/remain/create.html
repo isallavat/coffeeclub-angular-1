@@ -1,0 +1,19 @@
+<h1>Открыть смену</h1>
+<form class="remains" ng-submit="shift('open')">
+	<h3>Остатки</h3>
+	<h4>Товары</h4>
+	<table>
+		<tr ng-repeat="item in data.Goods">
+			<td>{{item.name}} ({{item.measure}})</td>
+			<td><div class="input-text"><input type="text" ng-model="item.count"></div></td>
+		</tr>
+	</table>
+	<h4>Деньги</h4>
+	<table>
+		<tr ng-repeat="item in data.Cash">
+			<td>Касса {{item.name}} (руб.)</td>
+			<td><div class="input-text"><input type="text" ng-model="item.sum"></div></td>
+		</tr>
+	</table><br><br>
+	<button type="submit" class="btn" ng-disabled="submit">Открыть смену</button>
+</form>

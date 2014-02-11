@@ -1,0 +1,790 @@
+@import "mixins";
+@import "../fonts/stylesheet.css";
+@import "http://webfonts.ru/import/scada.css";
+@import "http://webfonts.ru/import/hagin.css";
+
+html, body {height: 100%;}
+$light: #f4eddf;
+$brown: #7e6d65;
+$red: #ff755a;
+$dark-red: #a85a53;
+$green: #5db345;
+$gray: #ccc8c2;
+$violet: #776b8d;
+
+body {
+	background: url(../images/body-bg.png) center 0 repeat;
+	padding: 0;
+	margin: 0;
+	font: 14px/1.2 "helveticaneuecyr", sans-serif;
+	color: $brown;
+}
+h1 {
+	font: 36px/1 "scada", sans-serif;
+	color: $red;
+	margin: 0 0 30px;
+	text-transform: uppercase;
+}
+h2 {
+	font-size: 30px;
+	margin: 25px 0;
+	font-weight: normal;
+}
+h3 {
+	font-size: 22px;
+	margin: 25px 0;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+h4 {
+	font-size: 18px;
+	margin: 25px 0;
+	font-weight: normal;
+}
+
+*:focus {outline: none;}
+
+.currency {
+	font-family: "ALSRublRegular";
+}
+
+
+
+.clearfix {
+	clear: both;
+	font-size: 0;
+	line-height: 0;
+}
+
+
+.wrapper {
+	padding: 30px;
+}
+
+
+.container {
+	max-width: 1140px;
+	margin: 0 auto;
+}
+
+.flaticon-close {
+	font-size: 18px;
+	cursor: pointer;
+}
+
+
+section {
+	background: darken($brown, 10%) url(../images/pattern.png) 0 0 repeat;
+	@include box-shadow(0 0 10px rgba(0,0,0,.4));
+}
+
+
+aside.left {
+	float: left;
+	width: 250px;
+	color: $light;
+	padding: 0 0 100px 50px;
+	position: relative;
+	.top {
+		height: 100px;
+		padding: 35px 0 35px 0;
+		.logo {
+			float: left;
+			width: 97px;
+			height: 97px;
+			@include border-radius(50%);
+			@include box-shadow(0 0 5px rgba(0,0,0,.2));
+			img {@include border-radius(50%);}
+		}
+		.name {
+			float: left;
+			padding: 15px 20px;
+			font-family: "Hagin Caps";
+			line-height: 1;
+			color: $light;
+			text-shadow: 0 0 5px rgba(0,0,0,.2);
+			.s1 {font-size: 27px;}
+			.s2 {font-size: 44px;}
+		}
+	}
+	.nav {
+		margin-left: 20px;
+		padding: 10px 0;
+		border-top: 1px dotted $light;
+		.nav-item {
+			display: block;
+			margin: 15px 0;
+			font: 20px/1.3 "scada", sans-serif;
+			color: $light;
+			text-decoration: none;
+			&.current {
+				color: lighten($brown, 20%);
+				.icon {
+					@include box-shadow(0 0 5px rgba(0,0,0,.2));
+				}
+			}
+			.icon {
+				background-image: url(../images/sprite.png);
+				display: inline-block;
+				vertical-align: middle;
+				width: 43px;
+				height: 43px;
+				margin-right: 10px;
+				@include border-radius(50%);
+			}
+			@for $i from 0 through 8 {
+			  &.index-#{$i} .icon { background-position: 0 44px * -$i; }
+			  &.index-#{$i}.current .icon { background-position: -44px 44px * -$i; }
+			}
+		}
+	}
+	.order {
+		margin: 0 30px 0 20px;
+		border-top: 1px dotted $light;
+		h4 {
+			font-family: "scada";
+			margin-bottom: 10px;
+		}
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+			li {
+				clear: both;
+				padding: 15px 0;
+				font-size: 16px;
+				border-bottom: 1px solid rgba(240,229,206,0.1);
+				.count {float: right;}
+				.name {font-family: "helveticaneuecyrlight";}
+			}
+		}
+		.total {
+			font: 48px "scada";
+			padding: 15px 0;
+			.currency {color: lighten($brown, 20%);}
+		}
+		.pay {
+			background: url(../images/sprite.png) 0 bottom no-repeat;
+			display: block;
+			margin: 0 auto;
+			width: 148px;
+			height: 148px;
+			font: 34px/148px "scada";
+			color: $light;
+			text-align: center;
+			cursor: pointer;
+			@include border-radius(50%);
+		}
+	}
+}
+
+
+aside.right {
+	float: left;
+	width: 100%;
+	margin-left: -300px;
+	.layout {
+		background: $light url(../images/pattern.png) 0 0 repeat;
+		margin-left: 300px;
+		padding: 0 60px 100px 0;
+		min-height: 1000px;
+		@include box-shadow(-5px 0 5px rgba(0,0,0,0.2));
+		.top {
+			height: 56px;
+			padding: 57px 0 57px 45px;
+			.datetime {
+				float: left;
+				font-family: "Hagin Caps";
+				.time {
+					float: left;
+					.digit {
+						float: left;
+						background: $brown;
+						margin-right: 4px;
+						height: 56px;
+						width: 40px;
+						position: relative;
+						font-size: 42px;
+						line-height: 56px;
+						color: $light;
+						text-align: center;
+						@include border-radius(2px);
+						/*&:after {
+							content: "";
+							position: absolute;
+							top: 50%;
+							left: 0;
+							right: 0;
+							margin-top: -1px;
+							height: 2px;
+							background: #f4eddf;
+						}*/
+					}
+					.colon {
+						float: left;
+						margin: 0 11px 0 7px;
+						color: $brown;
+						font-size: 70px;
+						line-height: .6;
+					}
+				}
+				.date {
+					float: left;
+					margin: -7px 0 0 20px;
+					color: $brown;
+					font-size: 26px;
+					line-height: 1.4
+				}
+			}
+			.userbox {
+				font-family: "scada";
+				float: right;
+				text-align: right;
+				.name {
+					font-size: 18px;
+					line-height: .8;
+					padding-bottom: 12px;
+					color: $brown;
+				}
+			}
+		}
+		.content {
+			padding: 25px 0 0 45px;
+			border-top: 1px dotted $brown;
+		}
+	}
+}
+
+
+.offices {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	border-top: 1px solid rgba(112,84,72,0.1);
+	li {
+		font-size: 18px;
+		padding: 10px;
+		border-bottom: 1px solid rgba(112,84,72,0.1);
+		cursor: pointer;
+	}
+}
+
+.remains {
+	table {
+		border: none;
+		border-collapse: collapse;
+		td {
+			width: 40%;
+			padding: 5px;
+			vertical-align: middle;
+		}
+	}
+}
+
+
+.dashboard {
+	.search-result {
+		float: left;
+		margin: -22px 0 20px;
+		width: 100%;
+		position: relative;
+		.clients {
+			background: lighten($light, 5%);
+			border: 2px solid $red;
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			z-index: 2;
+			max-height: 360px;
+			overflow: auto;
+			tr {cursor: pointer;}
+			td {
+				padding-top: 10px;
+				padding-bottom: 10px;
+				&:nth-child(1) {
+					width: 45%;
+					background: none;
+				}
+			}
+		}
+	}
+	.client {
+		clear: both;
+		padding: 0 15px;
+		border: 2px solid $red;
+		.fio {
+			font-size: 18px;
+		}
+		h4 {
+			margin-bottom: 5px;
+		}
+		.actions {
+			margin-top: 0;
+			padding: 0;
+			list-style-position: inside;
+			border-top: 1px solid rgba(112,84,72,0.1);
+			font-size: 16px;
+			li {
+				padding: 5px 0;
+				border-bottom: 1px solid rgba(112,84,72,0.1);
+				b {
+					cursor: pointer;
+					border-bottom: 1px dashed $brown;
+				}
+			}
+			table {
+				border: none;
+				border-collapse: collapse;
+				margin-top: 5px;
+			}
+			td {
+				padding: 5px 20px;
+				border: 1px solid $brown;
+				input {width: 50px;}
+			}
+		}
+		.btn-wrapper {
+			text-align: center;
+			margin-bottom: 10px;
+		}
+	}
+	.btns {
+		float: right;
+		margin-top: 15px;
+		.btn {
+			margin-left: 15px;
+			.icon {
+				background: white;
+				display: inline-block;
+				vertical-align: middle;
+				margin-right: 5px;
+				width: 21px;
+				height: 21px;
+				font: 700 14px/20px "scada", sans-serif;
+				color: $red;
+				@include border-radius(50%);
+			}
+		}
+	}
+	.items {
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		li {
+			float: left;
+			text-align: center;
+			width: 25%;
+			margin-bottom: 15px;
+			.item {
+				width: 170px;
+				height: 170px;
+				border: 3px solid transparent;
+				cursor: pointer;
+				position: relative;
+				@include border-radius(50%);
+				@include user-select(none);
+				&:hover .inner {border-color: $light;}
+				&.brown {
+					.inner {
+						background-color: $brown;
+						background-position: 0 0;
+					}
+					&:hover {border-color: $brown;}
+				}
+				&.violet {
+					.inner {
+						background-color: $violet;
+						background-position: -170px 0;
+					}
+					&:hover {border-color: $violet;}
+				}
+				&.dark-red {
+					.inner {
+						background-color: $dark-red;
+						background-position: -340px 0;
+					}
+					&:hover {border-color: $dark-red;}
+				}
+				.inner {
+					background-image: url(../images/items.png);
+					width: 164px;
+					height: 164px;
+					font-family: "scada";
+					border: 3px solid transparent;
+					@include border-radius(50%);
+					.name {
+						padding: 30px 35px 0;
+						height: 50px;
+						font-size: 18px;
+						color: transparentize($light, 0.2);
+					}
+					.qty {
+						height: 25px;
+						font-size: 14px;
+						color: transparentize($light, 0.5);
+					}
+					.price {
+						font-size: 28px;
+						color: white;
+						.currency {color: transparentize($light, 0.5);}
+					}
+					.count {
+						background: url(../images/sprite.png) -88px -132px no-repeat;
+						position: absolute;
+						top: 10px;
+						right: 10px;
+						width: 34px;
+						height: 34px;
+						font-size: 20px;
+						line-height: 34px;
+						color: white;
+					}
+				}
+				.flaticon-close {
+					background: $light;
+					position: absolute;
+					bottom: 10px;
+					left: 10px;
+					width: 35px;
+					height: 35px;
+					font-size: 16px;
+					line-height: 35px;
+					font-weight: 700;
+					color: $gray;
+					@include border-radius(50%);
+					@include box-shadow(0 2px 0 rgba(153,144,138,0.7));
+				}
+			}
+		}
+	}
+}
+
+
+.clients-filter {
+	float: right;
+	width: 350px;
+}
+
+.clients, .staff {
+	table {
+		width: 100%;
+		border: none;
+		border-collapse: collapse;
+		th {
+			border-bottom: 1px solid rgba(112,84,72,0.1);
+			height: 40px;
+			vertical-align: top;
+			padding: 0;
+			text-align: left;
+			font-weight: normal;
+			text-transform: uppercase;
+			&:nth-child(1) {padding-left: 20px;}
+			&:nth-child(2) {padding-left: 8%;}
+			&:nth-child(3) {text-align: right;}
+		}
+		td {
+			padding: 15px 0;
+			height: 30px;
+			font-size: 18px;
+			border-bottom: 1px solid rgba(112,84,72,0.1);
+			&:nth-child(1) {
+				padding-left: 20px;
+				padding-right: 15px;
+				line-height: 30px;
+				width: 250px;
+				background: rgba(126,109,101,0.1);
+				.flaticon-info {
+					float: right;
+					color: $red;
+					font-size: 30px;
+					cursor: pointer;
+				}
+			}
+			&:nth-child(2) {padding-left: 8%;}
+			&:nth-child(3) {text-align: right;}
+		}
+	}
+}
+
+
+.settings {}
+
+
+footer {
+	padding: 20px 0 0;
+	color: lighten($brown, 20%);
+	.copyright {
+		float: left;
+		font: 20px "Hagin Caps";
+	}
+	.imc {
+		float: right;
+		text-align: right;
+		img {float: right;}
+		.text {
+			float: right;
+			margin: -2px 10px 0 0;
+			font: 18px/1.1 "scada";
+			white-space: nowrap;
+		}
+	}
+}
+
+
+.message {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 15;
+	padding: 15px 0;
+	height: 40px;
+	color: white;
+	@include box-shadow(0 2px 0 rgba(34,11,5,.5));
+	&.success {background: $green;}
+	&.fail {background: $red;}
+	&.info {background: $brown;}
+	table {
+		font: 20px/1.1 "scada", sans-serif;
+		border: none;
+		border-collapse: collapse;
+		td:nth-child(1) {
+			padding: 0 20px 0 0;
+			width: 40px;
+			border-right: 1px solid rgba(255,255,255,.4);
+		}
+		td:nth-child(2) {padding: 0 0 0 20px;}
+	}
+	.flaticon-info {
+		font-size: 40px;
+	}
+	.flaticon-close {
+		float: right;
+		margin-top: 8px;
+	}
+}
+
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 10;
+	background: rgba(58,45,39,.85);
+}
+
+
+.popup {
+	background: $light;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	@include transform(translate(-50%, -50%));
+	.flaticon-close {
+		position: absolute;
+		top: -35px;
+		right: 0;
+		color: white;
+	}
+	.title {
+		position: absolute;
+		top: -50px;
+		left: 0;
+		font: 36px/1 "scada", sans-serif;
+		color: white;
+	}
+}
+
+
+.login {
+	width: 300px;
+	padding: 20px;
+	.btn-wrapper {text-align: center;}
+}
+
+
+.payment {
+	text-align: center;
+	.tab {
+		position: relative;
+		input {
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin: 0;
+			opacity: 0;
+		}
+		span {
+			background: $gray;
+			float: left;
+			padding: 20px 30px 15px;
+			font-size: 18px;
+			cursor: pointer;
+		}
+		.icon {
+			background-image: url(../images/sprite.png);
+			display: inline-block;
+			width: 43px;
+			height: 43px;
+		}
+		@for $i from 0 through 3 {
+		  &.index-#{$i} .icon { background-position: -88px 44px * -$i; }
+		  &.index-#{$i} input:checked + span {
+		  	background: $light;
+		  	margin-top: -7px;
+		  	padding-top: 27px;
+		  	.icon { background-position: -132px 44px * -$i; }
+		  }
+		}
+	}
+	.text {
+		clear: both;
+		padding: 1px 0 50px;
+		.sum {
+			font-size: 20px;
+		}
+	}
+}
+
+
+
+.form-elem {
+	margin-bottom: 20px;
+	clear: both;
+	&.float-left {
+		float: left;
+		clear: none;
+	}
+	&.width-48 {
+		width: 48%;
+		&:nth-child(odd) {margin-right: 4%;}
+	}
+	.caption {
+		font: 20px "helveticaneuecyrlight", sans-serif;
+		padding-bottom: 5px;
+	}
+}
+
+
+.input-text {
+	position: relative;
+	input, textarea {
+		background: none;
+		border: 2px solid $red;
+		padding: 0 10px;
+		width: 100%;
+		height: 32px;
+		color: $brown;
+		font: 16px/1.2 "helveticaneuecyrlight", sans-serif;
+		@include box-sizing(border-box);
+		&:disabled {opacity: 0.6}
+	}
+	textarea {
+		height: 150px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		resize: none;
+	}
+}
+
+.input-checkbox {
+	display: inline-block;
+	height: 20px;
+	padding-left: 25px;
+	margin-right: 20px;
+	font: 16px/20px "helveticaneuecyrlight", sans-serif;
+	position: relative;
+	input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin: 0;
+		opacity: 0;
+		& + .marker {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 16px;
+			height: 16px;
+			color: white;
+			text-align: center;
+			font-size: 0;
+			line-height: 0;
+			border: 2px solid $red;
+		}
+		&:checked + .marker {
+			background: $red;
+			font-size: 16px;
+			line-height: 16px;
+		}
+		&:disabled + .marker {opacity: 0.6}
+	}
+}
+
+
+.input-radio {
+	display: inline-block;
+	height: 20px;
+	padding-left: 25px;
+	margin-right: 20px;
+	font: 16px/20px "helveticaneuecyrlight", sans-serif;
+	position: relative;
+	input {
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin: 0;
+		opacity: 0;
+		& + .marker {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 16px;
+			height: 16px;
+			color: white;
+			text-align: center;
+			font-size: 0;
+			line-height: 0;
+			border: 2px solid $red;
+			@include border-radius(50%);
+		}
+		&:checked + .marker {
+			background: white;
+			height: 6px;
+			width: 6px;
+			border-width: 6px;
+		}
+		&:disabled + .marker {opacity: 0.6}
+	}
+}
+
+
+.btn {
+	background: $red;
+	display: inline-block;
+	vertical-align: top;
+	height: 34px;
+	min-width: 70px;
+	padding:0 15px;
+	font: normal 18px/33px "helveticaneuecyr", sans-serif;
+	text-align: center;
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+	border-style: solid;
+	border-color: darken($red, 10%);
+	border-width: 0 0 3px;
+	&:active {border-width: 3px 0 0;}
+	&:disabled {opacity: 0.6}
+	&.small {
+		height: 27px;
+		line-height: 27px;
+	}
+}
+button.btn {
+	line-height: 18px;
+	min-width: 100px;
+}

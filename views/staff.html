@@ -1,0 +1,9 @@
+<h1>Сотрудники</h1>
+<h4>Работники онлайн:</h4>
+<div class="staff">
+	<table>
+		<tr><th>Имя</th><th>Сегодня транзакций</th><th>Сумма</th></tr>
+		<tr ng-repeat="item in staff"><td>{{item.name}}<i class="flaticon-info"></i></td><td>{{item.transactions}}</td><td>{{item.sum}}</td></tr>
+	</table>
+</div>
+<h4>Остальные работники:</h4>

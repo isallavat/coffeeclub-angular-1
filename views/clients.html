@@ -1,0 +1,10 @@
+<div class="input-text clients-filter">
+	<input type="text" placeholder="Начните вводить имя чтоб найти" ng-model="search">
+</div>
+<h1>Клиенты</h1>
+<div class="clients">
+	<table>
+		<tr><th>Имя</th><th>Номер телефона</th><th>Бонусы</th></tr>
+		<tr ng-repeat="item in clients | filter:search"><td>{{item.name}}<i class="flaticon-info"></i></td><td>{{item.phone}}</td><td>{{item.points}}</td></tr>
+	</table>
+</div>

@@ -1,0 +1,47 @@
+{
+  "nav" : [{
+    "url": "order/create"
+    ,"caption": "Дашборд"
+    ,"role": "staff"
+  }, {
+    "url": "clients"
+    ,"caption": "Клиенты"
+    ,"role": "admin"
+  }, {
+    "url": "staff"
+    ,"caption": "Сотрудники"
+    ,"role": "admin"
+  }, {
+    "url": "menu"
+    ,"caption": "Меню"
+    ,"role": "staff"
+  }, {
+    "url": "reports"
+    ,"caption": "Отчеты"
+    ,"role": "admin"
+  }, {
+    "url": "case"
+    ,"caption": "Кассы и cклад"
+    ,"role": "staff"
+  }, {
+    "url": "store"
+    ,"caption": "Склад"
+    ,"role": "admin"
+  }, {
+    "url": "settings"
+    ,"caption": "Настройки"
+    ,"role": "admin"
+  }, {
+    "url": "admin"
+    ,"caption": "Админка"
+    ,"role": "admin"
+  }]
+
+  ,"payments": [{
+    "type": 0
+    ,"caption": "Наличными:"
+  }, {
+    "type": 1
+    ,"caption": "Банковской картой:"
+  }]
+}

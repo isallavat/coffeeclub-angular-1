@@ -1,0 +1,37 @@
+[{
+  "name": "Поликарпов Николай"
+  ,"transactions": 72
+  ,"sum": 8790
+}, {
+	"name": "Кучерина Оля"
+  ,"transactions": 43
+  ,"sum": 2450
+}, {
+  "name": "Сомов Данил"
+  ,"transactions": 0
+  ,"sum": 700
+}, {
+	"name": "Белобородов Денис"
+  ,"transactions": 46
+  ,"sum": 1230
+}, {
+  "name": "Смирнов Никита"
+  ,"transactions": 72
+  ,"sum": 640
+}, {
+	"name": "Салмова Татьяна"
+  ,"transactions": 34
+  ,"sum": 1470
+}, {
+  "name": "Каримов Эдуард"
+  ,"transactions": 28
+  ,"sum": 7000
+}, {
+	"name": "Женя с района"
+  ,"transactions": 44
+  ,"sum": 1500
+}, {
+  "name": "Володя"
+  ,"transactions": 58
+  ,"sum": 1000
+}]
